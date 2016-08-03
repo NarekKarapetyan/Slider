@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Making a slider</title>
+    <link rel="stylesheet" href="Slider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
+</head>
+<body>
+
+    <div id="container">
+        <h1>My Slideshow</h1>
+        <div id="slidediv">
+        <img src="Slider images\download (1).jpg" class="sliderimages" id="first"></img>
+        <img src="Slider images\download (2).jpg" class="sliderimages" id="slide2"></img>
+        <img src="Slider images\download (3).jpg" class="sliderimages" id="slide3"></img>
+        <img src="Slider images\download.jpg" class="sliderimages" id="slide4"></img>
+    </div>
+        <a class="sliderbutton" id="right">></a>
+        <a class="sliderbutton" id="left"> <</a>
+    </div>
+
+
+    <script>
+    $('document').ready(function() {
+    var currentindex=0;
+    $('#right').on("click",function() {
+        currentindex++;
+        if(currentindex == 4){
+            currentindex=0;
+        }
+
+    });
+    $('#left').on("click",function() {
+        if(currentindex ==0){
+            currentindex=4;
+        }
+        currentindex--;
+    });
+ $('a').on("click",function() {
+     var images = $('#slidediv').children();
+     images.css("display","none");
+     console.log(currentindex);
+     //$('#slidediv img:nth-child(currentindex)').css("display","inline-block");
+     //$('#slidediv:eq(currentindex)').css("display","inline-block");
+images.eq(currentindex).css("display","inline-block");
+
+ })
+    });
+
+
+    </script>
+</body>
+</html>
